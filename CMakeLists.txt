@@ -60,7 +60,6 @@ if(${YOMM2_ENABLE_EXAMPLES})
 endif()
 
 option(YOMM2_ENABLE_DOC "Set to ON to generate tutorials and reference" OFF)
-option(YOMM2_ENABLE_BENCHMARKS "Set to ON to enable benchmarks" OFF)
 
 set(readme_md "${CMAKE_SOURCE_DIR}/README.md")
 set(readme_cpp "${CMAKE_SOURCE_DIR}/examples/README.cpp")
@@ -71,10 +70,10 @@ if(${YOMM2_ENABLE_DOC})
   add_custom_command(
     OUTPUT "${readme_md}"
     COMMAND ${CMAKE_SOURCE_DIR}/dev/code2md "${readme_cpp}" "${readme_md}"
-    DEPENDS "${readme_cpp}")
+    DEPENDS "${readme_cpp}"
+  )
+  add_subdirectory(docs.in)
 endif()
-
-add_subdirectory(docs.in)
 
 ## Install instruction
 # Create version file for cmake package
